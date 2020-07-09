@@ -22,10 +22,21 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
-      run: zip presence.zip lambda_function.py redis*
-
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+        apt-get update && apt install -y curl unzip
+
+        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        sudo unzip awscliv2.zip
+        sudo ./aws/install
+        sudo rm -rf awscli2.zip aws
+
+        aws --version
+
+        export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+        export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+
+        zip presence.zip lambda_function.py redis*
+
+        aws s3 cp presence.zip s3://nordri-aps1/presence.zip
+
