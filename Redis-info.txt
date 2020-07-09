@@ -1,0 +1,8 @@
+https://docs.aws.amazon.com/lambda/latest/dg/services-elasticache-tutorial.html
+
+https://github.com/ashutoshkarna03/redis-docker-python
+
+https://medium.com/better-programming/dockerizing-and-pythonizing-redis-41b1340979de
+
+https://realpython.com/python-redis/
+
