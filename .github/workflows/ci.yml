@@ -23,13 +23,9 @@ jobs:
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: |
-        #!/bin/bash -x
-        apt-get update && apt install -y curl unzip
-
         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
         sudo unzip awscliv2.zip
         sudo ./aws/install
-        sudo rm -rf awscli2.zip aws
 
         aws --version
 
@@ -39,5 +35,5 @@ jobs:
 
         zip presence.zip lambda_function.py redis*
 
-        aws s3 cp presence.zip s3://nordri-aps1/presence.zip
+        aws s3 cp presence.zip s3://nordri-check-presence/presence.zip
 
