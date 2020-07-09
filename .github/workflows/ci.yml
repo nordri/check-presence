@@ -29,3 +29,11 @@ jobs:
       run: |
         zip presence.zip lambda_function.py redis*
         aws s3 cp presence.zip s3://nordri-check-presence/presence.zip
+
+    - name: Deploy Lambda function with CloudFormation
+      run: |
+        aws cloudformation create-stack \
+          --stack-name check-presence-$GITHUB_RUN_NUMBER \
+          --template-body file://Cloudformation.yaml \
+          --parameters ParameterKey=LambdaVPCSubnet,ParameterValue=subnet-c3272585 \
+                       ParameterKey=S3Bucket,ParameterValue=nordri-check-presence
