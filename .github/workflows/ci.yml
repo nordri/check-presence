@@ -36,4 +36,5 @@ jobs:
           --stack-name check-presence-$GITHUB_RUN_NUMBER \
           --template-body file://Cloudformation.yaml \
           --parameters ParameterKey=LambdaVPCSubnet,ParameterValue=subnet-c3272585 \
-                       ParameterKey=S3Bucket,ParameterValue=nordri-check-presence
+                       ParameterKey=S3Bucket,ParameterValue=nordri-check-presence \
+                       ParameterKey=VPCSecurityGroup,ParameterValue=sg-52559837
