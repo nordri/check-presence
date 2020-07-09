@@ -1,9 +1,7 @@
-# This is a basic workflow to help you get started with Actions
 
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# Triggers the workflow on push to master
 on:
   push:
     branches: [ master ]
@@ -27,10 +25,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
+    - name: Zip and upload to AWS S3
       run: |
         zip presence.zip lambda_function.py redis*
-
         aws s3 cp presence.zip s3://nordri-check-presence/presence.zip
-
