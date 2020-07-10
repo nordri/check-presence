@@ -36,7 +36,7 @@ Parameters:
 
   LambdaVPCSubnet:
     Description: For network connectivity to AWS resources in a VPC, specify a subnet in the VPC
-    Type: List<AWS::EC2::Subnet::Id>
+    Type: String
 
 Resources:
 
